@@ -1,4 +1,8 @@
+import logging
 
+# Set up error logging
+logging.basicConfig(filename='error_log.txt', level=logging.ERROR,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 
 class OutputFile:
     def __init__(self, input_file=None):
@@ -16,7 +20,8 @@ class OutputFile:
                 break
 
         if not valid:
-            print(f"Error: File must have one of these extensions: {', '.join(self.allowed_extensions)}")
+            logging.error(f"Error: File must have one of these extensions: {', '.join(self.allowed_extensions)}")
+            print("invalid, try again")
             return False
         return True
 
@@ -24,7 +29,8 @@ class OutputFile:
         """Check if the file is in the current directory (no path separators)"""
         # Check if the filename contains any path separators
         if '/' in filename or '\\' in filename:
-            print("Error: Only files in the current directory are allowed. Do not include path separators (/ or \\).")
+            logging.error("Error: Only files in the current directory are allowed. Do not include path separators (/ or \\).")
+            print("invalid, try again")
             return False
 
         return True
@@ -32,7 +38,8 @@ class OutputFile:
     def is_different_from_input(self, filename):
         """Check if the output file is different from the input file"""
         if self.input_file and filename.lower() == self.input_file.lower():
-            print(f"Error: Output file cannot be the same as input file '{self.input_file}'")
+            logging.error(f"Error: Output file cannot be the same as input file '{self.input_file}'")
+            print("invalid, try again")
             return False
         return True
 
@@ -56,7 +63,8 @@ class OutputFile:
                 pass
             return True
         except Exception as e:
-            print(f"Error: An issue occurred with file '{filename}': {str(e)}")
+            logging.error(f"Error: An issue occurred with file '{filename}': {str(e)}")
+            print("error, try again")
             return False
 
     def get_file_input(self, prompt):

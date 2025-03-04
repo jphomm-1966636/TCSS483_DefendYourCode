@@ -1,4 +1,8 @@
+import logging
 
+# Set up error logging
+logging.basicConfig(filename='error_log.txt', level=logging.ERROR,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 
 class TwoNumbers:
     def __init__(self):
@@ -24,13 +28,15 @@ class TwoNumbers:
             user_input = input(prompt)
 
             if not self.is_valid_number(user_input):
-                print("Error: Please enter a valid integer.")
+                logging.error("Error: Please enter a valid integer.")
+                print("invalid, try again")
                 continue
 
             num = int(user_input)
 
             if not self.is_within_range(num):
-                print(f"Error: Number must be between {self.four_bytes_min} and {self.four_bytes_max}.")
+                logging.error(f"Error: Number must be between {self.four_bytes_min} and {self.four_bytes_max}.")
+                print("invalid, try again")
                 continue
 
             return num

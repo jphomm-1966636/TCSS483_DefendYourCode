@@ -1,4 +1,8 @@
+import logging
 
+# Set up error logging
+logging.basicConfig(filename='error_log.txt', level=logging.ERROR,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 class InputFile:
     def __init__(self):
         self.filename = None
@@ -14,7 +18,8 @@ class InputFile:
                 break
 
         if not valid:
-            print(f"Error: File must have one of these extensions: {', '.join(self.allowed_extensions)}")
+            logging.error(f"Error: File must have one of these extensions: {', '.join(self.allowed_extensions)}")
+            print("invalid, try again")
             return False
         return True
 
@@ -22,7 +27,8 @@ class InputFile:
         """Check if the file is in the current directory (no path separators)"""
         # Check if the filename contains any path separators
         if '/' in filename or '\\' in filename:
-            print("Error: Only files in the current directory are allowed. Do not include path separators (/ or \\).")
+            logging.error("Error: Only files in the current directory are allowed. Do not include path separators (/ or \\).")
+            print("invalid, try again")
             return False
 
         return True
@@ -43,7 +49,8 @@ class InputFile:
                 file.read(1)
                 return True
         except Exception as e:
-            print(f"Error: An issue occurred with file '{filename}': {str(e)}")
+            logging.error(f"Error: An issue occurred with file '{filename}': {str(e)}")
+            print("error occured, try again")
             return False
 
     def get_file_input(self, prompt):

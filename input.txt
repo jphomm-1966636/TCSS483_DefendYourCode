@@ -1,0 +1,17 @@
+=== USER INFORMATION ===
+First Name: Bill
+Last Name: Mar
+
+=== INTEGER CALCULATIONS ===
+First Integer: 1
+Second Integer: 1
+Sum: 2
+Product: 1
+
+=== FILE INFORMATION ===
+Input File Name: input.txt
+
+Input File Contents:
+----------------------
+
+----------------------

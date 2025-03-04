@@ -1,0 +1,34 @@
+=== USER INFORMATION ===
+First Name: b
+Last Name: b
+
+=== INTEGER CALCULATIONS ===
+First Integer: 0
+Second Integer: 0
+Sum: 0
+Product: 0
+
+=== FILE INFORMATION ===
+Input File Name: input.txt
+
+Input File Contents:
+----------------------
+=== USER INFORMATION ===
+First Name: Bill
+Last Name: Mar
+
+=== INTEGER CALCULATIONS ===
+First Integer: 1
+Second Integer: 1
+Sum: 2
+Product: 1
+
+=== FILE INFORMATION ===
+Input File Name: input.txt
+
+Input File Contents:
+----------------------
+
+----------------------
+
+----------------------

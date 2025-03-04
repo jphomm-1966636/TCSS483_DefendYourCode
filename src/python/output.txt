@@ -3,10 +3,10 @@ First Name: b
 Last Name: b
 
 === INTEGER CALCULATIONS ===
-First Integer: 0
-Second Integer: 0
-Sum: 0
-Product: 0
+First Integer: 2147483647
+Second Integer: 2147483647
+Sum: 4294967294
+Product: 4611686014132420609
 
 === FILE INFORMATION ===
 Input File Name: input.txt

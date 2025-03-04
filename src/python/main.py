@@ -34,33 +34,15 @@ def main():
         number_handler = TwoNumbers()
         first_num, second_num = number_handler.get_two_numbers()
 
-        # Calculate sum and product (with overflow check)
+        # Calculate sum and product
         sum_result = first_num + second_num
-        if (first_num > 0 and second_num > 0 and sum_result < 0) or \
-                (first_num < 0 and second_num < 0 and sum_result > 0):
-            print("Error: Integer overflow occurred during addition")
-            logging.error("Integer overflow occurred during addition")
-            return
-
-        # Python treats ints as if they're objects, so it'll never actually catch if it's four bytes
-        if sum_result > number_handler.four_bytes_max or sum_result < number_handler.four_bytes_min:
-            print("Error: Integer overflow occurred during addition, went past four bytes")
-            logging.error("Integer overflow occurred during addition")
-            return
-
-        # Check for potential multiplication overflow
-        # Python handles large integers automatically, but we'll verify against 4-byte int limits
         product_result = first_num * second_num
-        if product_result > number_handler.four_bytes_max or product_result < number_handler.four_bytes_min:
-            print("Error: Integer overflow occurred during multiplication")
-            logging.error("Integer overflow occurred during multiplication")
-            return
 
-        # Get input file
+        # input
         input_handler = InputFile()
         input_filename = input_handler.get_input_file()
 
-        # Get output file
+        # output
         output_handler = OutputFile(input_filename)
         output_filename = output_handler.get_output_file()
 
@@ -68,7 +50,6 @@ def main():
         password_manager = Password()
         password = password_manager.get_password()
 
-        # Read contents from input file
         try:
             with open(input_filename, 'r') as infile:
                 input_file_contents = infile.read()
@@ -77,7 +58,7 @@ def main():
             logging.error(f"Error reading input file: {e}")
             return
 
-        # Write all required information to output file
+        # Write all info to output.txt
         try:
             with open(output_filename, 'w') as outfile:
                 # Write user's name
@@ -102,7 +83,7 @@ def main():
 
             print(f"\nAll information has been successfully written to {output_filename}")
 
-            # Echo data to screen if desired
+            # Echo/prinitng all data
             print("\n=== OUTPUT SUMMARY (also written to file) ===")
             print(f"Name: {first_name} {last_name}")
             print(f"Integers: {first_num} and {second_num}")
